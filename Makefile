@@ -14,10 +14,15 @@ build:
 watch:
 	dune build -w @melange
 
+.PHONY: clean
+	dune clean
+
+.PHONY: bundle
 bundle:
 	npm exec -- \
 		esbuild _build/default/src/es6/src/App.js --bundle --minify --outfile=public/index.js
 
+.PHONY: serve
 serve:
 	npm exec -- \
 		esbuild _build/default/src/es6/src/App.js --bundle --servedir=public --outfile=public/index.js
