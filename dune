@@ -11,5 +11,4 @@
  (library
   (name rescript_react)
   (wrapped false)
-  (flags :standard -bs-jsx 3)
   (modes melange)))
