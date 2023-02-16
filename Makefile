@@ -20,5 +20,5 @@ bundle:
 
 serve:
 	npm exec -- \
-		esbuild _build/default/src/Index.bs.js --bundle --servedir=public --outdir=public
+		esbuild _build/default/src/es6/src/App.js --bundle --servedir=public --outfile=public/index.js
 
