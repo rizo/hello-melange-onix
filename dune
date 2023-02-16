@@ -1,23 +1,15 @@
 (dirs src node_modules)
 
-(subdir
- node_modules
- (vendored_dirs @rescript)
- (dirs @rescript)
- (subdir
-  @rescript
-  (vendored_dirs react)
-  (dirs react)
-  (subdir
-   react
-   (vendored_dirs src)
-   (dirs src)
-   (subdir
-    src
-    (include_subdirs unqualified)
-    (library
-     (name rescript_react)
-     (wrapped false)
-     (flags :standard -bs-jsx 3)
-     (modes melange))))))
+; See: https://github.com/melange-re/melange/issues/488
+; (data_only_dirs node_modules)
 
+(vendored_dirs node_modules)
+
+(subdir
+ node_modules/@rescript/react/src
+ (include_subdirs unqualified)
+ (library
+  (name rescript_react)
+  (wrapped false)
+  (flags :standard -bs-jsx 3)
+  (modes melange)))
