@@ -5,41 +5,37 @@ let
 
   onix = import (builtins.fetchGit {
     url = "https://github.com/odis-labs/onix.git";
-    rev = "93f010fc3ca3613790a30f8f1919b601b1583361";
+    rev = "444245996f7c10697c566f2c60623cea9311cb72";
   }) {
     inherit pkgs ocamlPackages;
     verbosity = "debug";
   };
 
-  env = onix.env {
-    repo = {
-      url = "https://github.com/ocaml/opam-repository.git";
-      rev = "a0ac569e24e60513e00b200b140d2f445039d873";
-    };
-    path = ./.;
-    gitignore = ./.gitignore;
-    deps = { "ocaml-system" = "*"; };
-    vars = {
-      with-dev-setup = true;
-      with-test = true;
-      with-doc = true;
-    };
-    overlay = self: super: {
-      "melange" = super.melange.overrideAttrs (superAttrs: {
-        postInstall = ''
-          mkdir -p $out/lib/melange
-          mv $out/lib/ocaml/${ocamlPackages.ocaml.version}/site-lib/melange/melange $out/lib/melange/melange
-          cp -r $out/lib/ocaml/${ocamlPackages.ocaml.version}/site-lib/melange/runtime $out/lib/melange/runtime
-        '';
-      });
-    };
+in onix.env {
+  repos = [{
+    url = "https://github.com/ocaml/opam-repository.git";
+    rev = "a0ac569e24e60513e00b200b140d2f445039d873";
+  }];
+  path = ./.;
+  deps = { "ocaml-system" = "*"; };
+  vars = {
+    with-dev-setup = true;
+    with-test = true;
+    with-doc = true;
   };
-in {
-  lock = env.lock;
-  shell = pkgs.mkShell {
-    inputsFrom = [ env.pkgs.hello-melange ];
-    shellHook = ''
-      export PS1="[\[\033[1;34m\]nix\[\033[0m\]]\$ "
-    '';
+
+  overlay = self: super: {
+    "melange" = super.melange.overrideAttrs (superAttrs: {
+      postInstall = ''
+        wrapProgram "$out/bin/melc" \
+          --set MELANGELIB "$OCAMLFIND_DESTDIR/melange/melange:$OCAMLFIND_DESTDIR/melange/runtime/melange:$OCAMLFIND_DESTDIR/melange/belt/melange"
+        mkdir -p $out/lib/melange
+        cp -r $OCAMLFIND_DESTDIR/melange/mel_runtime \
+            $out/lib/melange/__MELANGE_RUNTIME__
+        cp -r $OCAMLFIND_DESTDIR/melange/mel_runtime \
+            $out/lib/melange/mel_runtime
+      '';
+      buildInputs = (superAttrs.buildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+    });
   };
 }

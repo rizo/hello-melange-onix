@@ -172,7 +172,7 @@
        "version": "dev",
        "src": {
          "url": "git+https://github.com/ocaml/dune.git",
-         "rev": "05797cd3f505beca4d6d62c576506d7608a6d29d"
+         "rev": "28545f3f729d6b203bc3f4f5bd5bda5ba975bb3a"
        },
        "depends": [
          "base-threads",
@@ -358,7 +358,7 @@
        "version": "dev",
        "src": {
          "url": "git+https://github.com/melange-re/melange.git",
-         "rev": "f4ddebbc7755af5e983c4df2ac51498f286e1074"
+         "rev": "c4a7f654d9756b9ca7256d0ea279769c79c0bee7"
        },
        "depends": [
          "cmdliner",
@@ -376,7 +376,7 @@
        "version": "dev",
        "src": {
          "url": "git+https://github.com/melange-re/melange.git",
-         "rev": "f4ddebbc7755af5e983c4df2ac51498f286e1074"
+         "rev": "c4a7f654d9756b9ca7256d0ea279769c79c0bee7"
        },
        "depends": [
          "base64",
