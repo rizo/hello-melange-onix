@@ -21,18 +21,12 @@ build: [
 ]
 
 depends: [
-  "ocaml" {= "4.14.0"}
+  "ocaml" { >= "4.14.0" & < "5.0.0"}
   "dune" {build}
   "reason" {build}
-
-  "melange"
-  "mel"
-
+  "melange" {build}
   "ocaml-lsp-server" {with-dev-setup}
   "ocamlformat" {with-dev-setup}
-]
-pin-depends: [
-  ["dune.dev" "git+https://github.com/ocaml/dune.git#28545f3f729d6b203bc3f4f5bd5bda5ba975bb3a"]
-  ["melange.dev" "git+https://github.com/melange-re/melange.git#c4a7f654d9756b9ca7256d0ea279769c79c0bee7"]
-  ["mel.dev" "git+https://github.com/melange-re/melange.git#c4a7f654d9756b9ca7256d0ea279769c79c0bee7"]
+  "reactjs-jsx-ppx" {build}
+  "reason-react"
 ]
