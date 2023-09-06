@@ -1,10 +1,10 @@
 .PHONY: lock
 lock:
-	nix develop -f default.nix -j8 -v lock
+	nix develop -f default.nix --max-jobs auto  -v lock
 
 .PHONY: shell
 shell:
-	nix develop -f default.nix -j8 -v shell
+	nix develop -f default.nix --max-jobs auto  -v shell
 
 .PHONY: build
 build:
