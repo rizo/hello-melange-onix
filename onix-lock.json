@@ -281,7 +281,9 @@
        "build-depends": [
          "dune",
          "melange",
-         "reason"
+         "reactjs-jsx-ppx",
+         "reason",
+         "reason-react"
        ],
        "dev-setup-depends": [
          "ocaml-lsp-server",
@@ -694,6 +696,21 @@
          "dune"
        ]
      },
+     "reactjs-jsx-ppx": {
+       "version": "1.0.0",
+       "src": {
+         "url": "https://github.com/melange-re/melange/releases/download/1.0.0/melange-1.0.0.tbz",
+         "sha256": "01ff3a2711b3812889313288f9e0c8bfe2e17464b6b85282c5113cfc3b740968"
+       },
+       "depends": [
+         "dune",
+         "ocaml",
+         "ppxlib"
+       ],
+       "build-depends": [
+         "dune"
+       ]
+     },
      "reason": {
        "version": "3.9.0",
        "src": {
@@ -714,6 +731,27 @@
          "dune",
          "menhir",
          "ocamlfind"
+       ]
+     },
+     "reason-react": {
+       "version": "0.11.0",
+       "src": {
+         "url": "https://github.com/reasonml/reason-react/releases/download/0.11.0/reason-react-0.11.0.tbz",
+         "sha256": "6df6cc4c0f18890ceada8ce3d6693ce6bcaebdc660fa7278134140267694f6bf"
+       },
+       "depends": [
+         "dune",
+         "melange",
+         "ocaml",
+         "reactjs-jsx-ppx",
+         "reason"
+       ],
+       "build-depends": [
+         "dune"
+       ],
+       "depexts": [
+         "react",
+         "react-dom"
        ]
      },
      "result": {

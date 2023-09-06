@@ -35,5 +35,8 @@ in onix.env {
       '';
       buildInputs = (superAttrs.buildInputs or [ ]) ++ [ pkgs.makeWrapper ];
     });
+    "reason-react" = super.reason-react.overrideAttrs (superAttrs: {
+      nativeBuildInputs = (superAttrs.nativeBuildInputs or [ ]) ++ [ self.reason self.melange ];
+    });
   };
 }
