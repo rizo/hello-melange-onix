@@ -20,6 +20,11 @@ Build the project:
 [nix]$ make watch
 ```
 
+Install node_modules:
+```shell
+[nix]$ npm ci
+```
+
 Bundle the project:
 ```shell
 [nix]$ make bundle
