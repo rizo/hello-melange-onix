@@ -31,12 +31,7 @@ in onix.env {
     "melange" = super.melange.overrideAttrs (superAttrs: {
       postInstall = ''
         wrapProgram "$out/bin/melc" \
-          --set MELANGELIB "$OCAMLFIND_DESTDIR/melange/melange:$OCAMLFIND_DESTDIR/melange/runtime/melange:$OCAMLFIND_DESTDIR/melange/belt/melange"
-        mkdir -p $out/lib/melange
-        cp -r $OCAMLFIND_DESTDIR/melange/mel_runtime \
-            $out/lib/melange/__MELANGE_RUNTIME__
-        cp -r $OCAMLFIND_DESTDIR/melange/mel_runtime \
-            $out/lib/melange/mel_runtime
+          --set MELANGELIB "$OCAMLFIND_DESTDIR/melange/melange:$OCAMLFIND_DESTDIR/melange/belt:$OCAMLFIND_DESTDIR/melange/belt/melange:$OCAMLFIND_DESTDIR/melange/js_parser:$OCAMLFIND_DESTDIR/melange/ppx:$OCAMLFIND_DESTDIR/melange/ppxlib-ast:$OCAMLFIND_DESTDIR/melange/ppxlib:$OCAMLFIND_DESTDIR/melange/runtime:$OCAMLFIND_DESTDIR/melange/runtime/melange"
       '';
       buildInputs = (superAttrs.buildInputs or [ ]) ++ [ pkgs.makeWrapper ];
     });
