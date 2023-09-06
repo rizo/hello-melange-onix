@@ -1,6 +1,6 @@
 (melange.emit
  (alias melange)
  (target es6)
- (libraries rescript_react)
+ (libraries reason-react)
  (module_systems es6)
- (compile_flags :standard -bs-jsx 3))
+ (preprocess (pps reactjs-jsx-ppx)))
