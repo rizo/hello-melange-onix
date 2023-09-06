@@ -1,4 +1,7 @@
-{ pkgs ? import <nixpkgs> { } }:
+# Commit hash for nixos-23.05 obtained at https://status.nixos.org as of 2023-09-05
+{ pkgs ? import
+  (fetchTarball "https://github.com/NixOS/nixpkgs/archive/da5adce0ffaf.tar.gz")
+  { } }:
 
 let
   ocamlPackages = pkgs.ocaml-ng.ocamlPackages_4_14;
