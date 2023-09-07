@@ -276,18 +276,21 @@
        "version": "dev",
        "src": { "url": "file://." },
        "depends": [
-         "ocaml"
+         "ocaml",
+         "reason-react"
        ],
        "build-depends": [
          "dune",
          "melange",
          "reactjs-jsx-ppx",
-         "reason",
-         "reason-react"
+         "reason"
        ],
        "dev-setup-depends": [
          "ocaml-lsp-server",
          "ocamlformat"
+       ],
+       "depexts": [
+         "nodejs"
        ],
        "vars": { "with-test": true, "with-doc": true, "with-dev-setup": true }
      },

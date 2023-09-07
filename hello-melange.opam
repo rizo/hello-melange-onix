@@ -1,9 +1,4 @@
 opam-version: "2.0"
-maintainer: "Hyper Systems Ltd <admin@hyper.ag>"
-authors: "Hyper Systems Ltd <admin@hyper.ag>"
-homepage: "https://hyper.ag"
-bug-reports: "https://github.com/hyper-systems/edge-server/issues"
-synopsis: "Hyper web dashboard"
 
 build: [
   ["dune" "subst"] {dev}
@@ -22,11 +17,14 @@ build: [
 
 depends: [
   "ocaml" { >= "4.14.0" & < "5.0.0"}
+  "reason-react"
   "dune" {build}
-  "reason" {build}
   "melange" {build}
+  "reason" {build}
+  "reactjs-jsx-ppx" {build}
   "ocaml-lsp-server" {with-dev-setup}
   "ocamlformat" {with-dev-setup}
-  "reactjs-jsx-ppx" {build}
-  "reason-react"
+]
+depexts: [
+  ["nodejs"] {os-distribution = "nixos" & with-dev-setup}
 ]
